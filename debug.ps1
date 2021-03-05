@@ -1,0 +1,2 @@
+Set-Location "C:\Program Files\qemu"
+qemu-system-aarch64 -s -machine virt -m 1024M -cpu cortex-a53 -semihosting -nographic -kernel "F:\Code\Science\stellaros\target\aarch64-unknown-none\debug\stellaros"#  -d in_asm -display none

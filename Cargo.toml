@@ -1,0 +1,13 @@
+[package]
+name = "stellaros"
+version = "0.1.0"
+authors = ["Chengzhi Tan <tcz717@hotmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-a = "5.x.x"
+qemu-exit = "1.x.x"
+dtb = "0.x.x"
+register = "1.x.x"
