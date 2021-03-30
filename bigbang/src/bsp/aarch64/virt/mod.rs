@@ -1,0 +1,1 @@
+global_asm!(include_str!("bsp/aarch64/virt/start.s"));

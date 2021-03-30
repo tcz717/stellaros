@@ -14,14 +14,17 @@
 mod debug;
 
 mod arch;
+mod boot;
 mod bsp;
 mod common;
 mod cpu;
 mod memory;
+mod mmu;
 mod panic;
 mod runtime_init;
 
 use arch::exception::handling_init;
+use stellaros::boot::BootInfo;
 
 /// Early init code.
 ///
@@ -34,9 +37,10 @@ use arch::exception::handling_init;
 ///         drivers (which currently employ IRQSafeNullLocks instead of spinlocks), will fail to
 ///         work on the RPi SoCs.
 #[no_mangle]
-unsafe fn kernel_init() -> ! {
+unsafe extern fn kernel_init(boot_info: &BootInfo) -> ! {
     handling_init();
     println!("StellarOS started!");
+    println!("Boot Info:\n\t{}", boot_info);
     use cpu::qemu_exit_success;
     qemu_exit_success()
 }

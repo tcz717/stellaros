@@ -1,27 +1,10 @@
-// SPDX-License-Identifier: MIT OR Apache-2.0
-//
-// Copyright (c) 2021 Andre Richter <andre.o.richter@gmail.com>
-
-//! Architectural boot code.
-//!
-//! # Orientation
-//!
-//! Since arch modules are imported into generic modules using the path attribute, the path of this
-//! file is:
-//!
-//! crate::cpu::boot::arch_boot
+// global_asm!(include_str!("start.s"));
 
 use crate::runtime_init;
 use crate::{bsp, cpu};
 use cortex_a::{asm, regs::*};
 
 use crate::arch::reg;
-
-global_asm!(include_str!("start.s"));
-
-//--------------------------------------------------------------------------------------------------
-// Private Code
-//--------------------------------------------------------------------------------------------------
 
 /// Transition from EL2 to EL1.
 ///
@@ -71,10 +54,6 @@ fn config_el1() {
     reg::cpacr_el1::CPACR_EL1.write(reg::cpacr_el1::CPACR_EL1::FPEN::NONE);
 }
 
-//--------------------------------------------------------------------------------------------------
-// Public Code
-//--------------------------------------------------------------------------------------------------
-
 /// The entry of the `kernel` binary.
 ///
 /// The function must be named `_start`, because the linker is looking for this exact name.
@@ -82,8 +61,7 @@ fn config_el1() {
 /// # Safety
 ///
 /// - Linker script must ensure to place this function where it is expected by the target machine.
-/// - We have to hope that the compiler omits any stack pointer usage, because we are not setting up
-///   a stack for EL2.
+/// - Before calling this function, stack and MMU should be initialized.
 #[no_mangle]
 pub unsafe fn start() -> ! {
     // Expect the boot core to start in EL2.
