@@ -8,6 +8,10 @@ edition = "2018"
 
 [dependencies]
 cortex-a = "5.x.x"
-qemu-exit = "1.x.x"
+qemu-exit = "2.x.x"
 dtb = "0.x.x"
 register = "1.x.x"
+tock-registers = "~0"
+
+[patch.crates-io]
+tock-registers = { git = "https://github.com/Cryptjar/tock.git", branch = "fix-const-fn-feature" }

@@ -1,6 +1,7 @@
 use core::{cell::UnsafeCell, fmt};
 use cortex_a::{barrier, regs::*};
 use register::InMemoryRegister;
+use tock_registers::registers::Readable;
 
 // Assembly counterpart to this file.
 global_asm!(include_str!("exception.s"));

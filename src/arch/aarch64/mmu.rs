@@ -24,6 +24,7 @@ use crate::{
 use core::{convert, marker::PhantomData, mem::ManuallyDrop};
 use cortex_a::regs::{RegisterReadWrite, MAIR_EL1, SCTLR_EL1, TCR_EL1, TTBR0_EL1, TTBR1_EL1};
 use register::{mmio::ReadWrite, register_bitfields, InMemoryRegister};
+use tock_registers::registers::{Readable, Writeable};
 
 pub type Granule4KiB = TranslationGranule<{ 4 * 1024 }>;
 pub type Granule16KiB = TranslationGranule<{ 16 * 1024 }>;

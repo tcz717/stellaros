@@ -1,8 +1,8 @@
 #![no_std]
 #![feature(asm)]
 #![feature(global_asm)]
-#![feature(const_fn)]
 #![feature(const_panic)]
+#![feature(const_fn_trait_bound)]
 #![feature(const_fn_fn_ptr_basics)]
 #![feature(format_args_nl)]
 

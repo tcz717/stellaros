@@ -5,8 +5,8 @@
 #![no_main]
 #![feature(asm)]
 #![feature(global_asm)]
-#![feature(const_fn)]
 #![feature(const_panic)]
+#![feature(const_fn_trait_bound)]
 #![feature(const_fn_fn_ptr_basics)]
 #![feature(format_args_nl)]
 
@@ -37,7 +37,7 @@ use stellaros::boot::BootInfo;
 ///         drivers (which currently employ IRQSafeNullLocks instead of spinlocks), will fail to
 ///         work on the RPi SoCs.
 #[no_mangle]
-unsafe extern fn kernel_init(boot_info: &BootInfo) -> ! {
+unsafe extern "C" fn kernel_init(boot_info: &BootInfo) -> ! {
     handling_init();
     println!("StellarOS started!");
     println!("Boot Info:\n\t{}", boot_info);

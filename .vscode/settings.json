@@ -3,5 +3,11 @@
     "rust-analyzer.inlayHints.enable": true,
     "rust-analyzer.diagnostics.disabled": [
         "macro-error"
-    ]
+    ],
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/target/**": true
+    }
 }

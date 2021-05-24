@@ -19,9 +19,9 @@ checksum = "be6c6e1672a044abd9652045ba11beb1c7fbec7e5262dcba54795e82aa577971"
 
 [[package]]
 name = "qemu-exit"
-version = "1.0.2"
+version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "702abe3c3255be20a4d67bda326c4117081a49a57afaf752de4845091bc6b476"
+checksum = "e179da212ad772061d4120ad2a86a019f929362a477582d8c8014dbf7509cd83"
 
 [[package]]
 name = "register"
@@ -40,10 +40,10 @@ dependencies = [
  "dtb",
  "qemu-exit",
  "register",
+ "tock-registers",
 ]
 
 [[package]]
 name = "tock-registers"
 version = "0.6.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f521a79accce68c417c9c77ce22108056b626126da1932f7e2e9b5bbffee0cea"
+source = "git+https://github.com/Cryptjar/tock.git?branch=fix-const-fn-feature#4f4c14cc1585b20f9baa648f8c8b148b869f6835"
